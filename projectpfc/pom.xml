@@ -6,16 +6,10 @@
   <packaging>war</packaging>
   <name>Project PFC</name>
   
-  <repositories>
-		<repository>
-			<id>prime-repo</id>
-			<name>Prime Repo</name>
-			<url>http://repository.primefaces.org</url>
-			<layout>default</layout>
-		</repository>
-	</repositories>
-
+  	<!-- DEPENDENCIAS -->
 	<dependencies>
+	
+		<!-- INICIO Prime Faces -->
 		<dependency>
 			<groupId>org.primefaces</groupId>
 			<artifactId>primefaces</artifactId>
@@ -33,21 +27,23 @@
 			<artifactId>commons-fileupload</artifactId>
 			<version>1.3</version>
 		</dependency>
-
-		<!-- <dependency>
-			<groupId>com.sun.faces</groupId>
-			<artifactId>jsf-api</artifactId>
-			<version>2.0.0-b13</version>
-			<scope>compile</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.sun.faces</groupId>
-			<artifactId>jsf-impl</artifactId>
-			<version>2.0.0-b13</version>
-			<scope>compile</scope>
-		</dependency> -->
+		<!-- FIM Prime Faces -->
 		
+<!-- 		 <dependency> -->
+<!-- 			<groupId>com.sun.faces</groupId> -->
+<!-- 			<artifactId>jsf-api</artifactId> -->
+<!-- 			<version>2.0.0-b13</version> -->
+<!-- 			<scope>compile</scope> -->
+<!-- 		</dependency> -->
+
+<!-- 		<dependency> -->
+<!-- 			<groupId>com.sun.faces</groupId> -->
+<!-- 			<artifactId>jsf-impl</artifactId> -->
+<!-- 			<version>2.0.0-b13</version> -->
+<!-- 			<scope>compile</scope> -->
+<!-- 		</dependency> -->
+		
+		<!-- INICIO JSF -->
 		<dependency>
 			<groupId>com.sun.faces</groupId>
 			<artifactId>jsf-api</artifactId>
@@ -60,6 +56,20 @@
 			<version>2.2.12</version>
 		</dependency>
 		
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.5</version>
+		</dependency>
+		<!-- FIM JSF -->
+		
+		<!-- INICIO Hibernate -->
 		<dependency>
 			<groupId>org.hibernate.javax.persistence</groupId>
 			<artifactId>hibernate-jpa-2.1-api</artifactId>
@@ -77,26 +87,40 @@
 			<artifactId>hibernate-entitymanager</artifactId>
 			<version>5.0.0.Final</version>
 		</dependency>
-		
-		
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>jstl</artifactId>
-			<version>1.2</version>
-		</dependency>
+		<!-- FIM Hibernate -->
 
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>servlet-api</artifactId>
-			<version>2.5</version>
-		</dependency>
-
+		<!-- INICIO Mysql -->
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<version>5.1.29</version>
 		</dependency>
+		<!-- FIM Mysql -->
+		
+		<!-- INICIO Wild Fly -->
+        <dependency>
+			<groupId>org.wildfly</groupId>
+			<artifactId>wildfly-server</artifactId>
+			<version>8.2.0.Final</version>
+			<exclusions>  
+	          <exclusion>  
+	            <!-- exclude with Java 8 - otherwise eclipse .m2 becomes crazy (JDK 8 u 25) -->  
+	            <groupId>sun.jdk</groupId>  
+	            <artifactId>jconsole</artifactId>  
+			</exclusion>  
+        </exclusions>  
+		</dependency>
+		<dependency>
+	      <groupId>org.wildfly</groupId>
+	      <artifactId>wildfly-parent</artifactId>
+	      <version>8.2.0.Final</version>
+	      <type>pom</type>
+	      <scope>import</scope>
+	    </dependency>
+        <!-- FIM Wild Fly -->
 	</dependencies>
+
+	<!-- PLUGINS -->
 
 	<build>
 		<plugins>
@@ -132,4 +156,14 @@
 			</plugin>
 		</plugins>
 	</build>
+	
+	<!-- REPOSITÓRIOS -->
+	  <repositories>
+		<repository>
+			<id>prime-repo</id>
+			<name>Prime Repo</name>
+			<url>http://repository.primefaces.org</url>
+			<layout>default</layout>
+		</repository>
+	</repositories>
 </project>
