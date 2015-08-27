@@ -1,7 +1,7 @@
 package br.com.projectpfc.model;
 
 //@Entity
-//@Table(name = "tb_administrador")
+// @Table(name = "tb_administrador")
 public class Administrador extends Usuario {
 	
 	/**
