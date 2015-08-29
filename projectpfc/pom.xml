@@ -6,6 +6,19 @@
   <packaging>war</packaging>
   <name>Project PFC</name>
   
+  
+  <properties>
+		<spring.version>3.0.5.RELEASE</spring.version>
+		<primefaces.version>5.2</primefaces.version>
+		<jsf.version>2.2.12</jsf.version>
+		<hibernate.version>5.0.0.Final</hibernate.version>
+		<mysql.version>5.1.29</mysql.version>
+		<wildfly.version>8.2.0.Final</wildfly.version>
+		
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+  </properties>
+	
   	<!-- DEPENDENCIAS -->
 	<dependencies>
 	
@@ -13,7 +26,7 @@
 		<dependency>
 			<groupId>org.primefaces</groupId>
 			<artifactId>primefaces</artifactId>
-			<version>5.2</version>
+			<version>${primefaces.version}</version>
 		</dependency>
 
 		<dependency>
@@ -29,31 +42,77 @@
 		</dependency>
 		<!-- FIM Prime Faces -->
 		
-<!-- 		 <dependency> -->
-<!-- 			<groupId>com.sun.faces</groupId> -->
-<!-- 			<artifactId>jsf-api</artifactId> -->
-<!-- 			<version>2.0.0-b13</version> -->
-<!-- 			<scope>compile</scope> -->
-<!-- 		</dependency> -->
-
-<!-- 		<dependency> -->
-<!-- 			<groupId>com.sun.faces</groupId> -->
-<!-- 			<artifactId>jsf-impl</artifactId> -->
-<!-- 			<version>2.0.0-b13</version> -->
-<!-- 			<scope>compile</scope> -->
-<!-- 		</dependency> -->
+		<!-- INICIO Spring 3 -->
+		<dependency>  
+	       <groupId>javax.validation</groupId>  
+	       <artifactId>validation-api</artifactId>  
+	       <version>1.0.0.GA</version>  
+	     </dependency>  
+	     <dependency>  
+	       <groupId>org.springframework</groupId>  
+	       <artifactId>spring-core</artifactId>  
+	       <version>${spring.version}</version>  
+	     </dependency>  
+	     <dependency>  
+	       <groupId>org.springframework</groupId>  
+	       <artifactId>spring-web</artifactId>  
+	       <version>${spring.version}</version>  
+	     </dependency>  
+	     <dependency>  
+	       <groupId>org.springframework</groupId>  
+	       <artifactId>spring-webmvc</artifactId>  
+	       <version>${spring.version}</version>  
+	     </dependency>  
+	     <dependency>  
+	       <groupId>org.springframework</groupId>  
+	       <artifactId>spring-jdbc</artifactId>  
+	       <version>${spring.version}</version>  
+	     </dependency>  
+	     <!-- Spring Security -->  
+	     <dependency>  
+	       <groupId>org.springframework.security</groupId>  
+	       <artifactId>spring-security-core</artifactId>  
+	       <version>${spring.version}</version>  
+	     </dependency>  
+	     <dependency>  
+	       <groupId>org.springframework.security</groupId>  
+	       <artifactId>spring-security-web</artifactId>  
+	       <version>${spring.version}</version>  
+	     </dependency>  
+	     <dependency>  
+	       <groupId>org.springframework.security</groupId>  
+	       <artifactId>spring-security-config</artifactId>  
+	       <version>${spring.version}</version>  
+	     </dependency>  
+	     <dependency>  
+	       <groupId>org.springframework.security</groupId>  
+	       <artifactId>spring-security-taglibs</artifactId>  
+	       <version>${spring.version}</version>  
+	     </dependency>  
+	     <dependency>  
+	       <groupId>org.springframework.security</groupId>  
+	       <artifactId>spring-security-acl</artifactId>  
+	       <version>${spring.version}</version>  
+	     </dependency>  
+    	<!-- C3p0 -->
+    	<dependency>  
+	       <groupId>c3p0</groupId>  
+	       <artifactId>c3p0</artifactId>  
+	       <version>0.9.1</version>  
+	     </dependency>  
+		<!-- FIM Spring 3-->
 		
 		<!-- INICIO JSF -->
 		<dependency>
 			<groupId>com.sun.faces</groupId>
 			<artifactId>jsf-api</artifactId>
-			<version>2.2.12</version>
+			<version>${jsf.version}</version>
 		</dependency>
 		
 		<dependency>
 			<groupId>com.sun.faces</groupId>
 			<artifactId>jsf-impl</artifactId>
-			<version>2.2.12</version>
+			<version>${jsf.version}</version>
 		</dependency>
 		
 		<dependency>
@@ -79,13 +138,13 @@
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
-			<version>5.0.0.Final</version>
+			<version>${hibernate.version}</version>
 		</dependency>
 		
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-entitymanager</artifactId>
-			<version>5.0.0.Final</version>
+			<version>${hibernate.version}</version>
 		</dependency>
 		<!-- FIM Hibernate -->
 
@@ -93,7 +152,7 @@
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-			<version>5.1.29</version>
+			<version>${mysql.version}</version>
 		</dependency>
 		<!-- FIM Mysql -->
 		
@@ -101,7 +160,7 @@
         <dependency>
 			<groupId>org.wildfly</groupId>
 			<artifactId>wildfly-server</artifactId>
-			<version>8.2.0.Final</version>
+			<version>${wildfly.version}</version>
 			<exclusions>  
 	          <exclusion>  
 	            <!-- exclude with Java 8 - otherwise eclipse .m2 becomes crazy (JDK 8 u 25) -->  
@@ -113,9 +172,9 @@
 		<dependency>
 	      <groupId>org.wildfly</groupId>
 	      <artifactId>wildfly-parent</artifactId>
-	      <version>8.2.0.Final</version>
+	      <version>${wildfly.version}</version>
 	      <type>pom</type>
-	      <scope>import</scope>
+	      <scope>compile</scope>
 	    </dependency>
         <!-- FIM Wild Fly -->
 	</dependencies>
@@ -155,8 +214,17 @@
 				</configuration>
 			</plugin>
 		</plugins>
+		<resources>
+	      <resource>
+	        <directory>src/main/resources/conf</directory>
+	        <includes>
+	          <include>login.properties</include>
+	        </includes>
+	      </resource>
+	    </resources>
 	</build>
 	
+
 	<!-- REPOSITÓRIOS -->
 	  <repositories>
 		<repository>

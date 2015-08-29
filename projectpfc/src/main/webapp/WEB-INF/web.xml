@@ -1,15 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
-	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
-	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xmlns="http://java.sun.com/xml/ns/javaee" 
+	xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	id="WebApp_ID" version="2.5">
 
 	<display-name>pages</display-name>
+	<servlet>
+		<servlet-name>login</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>login</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>  
 	<listener>
-		<listener-class>com.sun.faces.config.ConfigureListener</listener-class>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
-		
+	<!-- Spring Security -->
+	<context-param>  
+    <param-name>contextConfigLocation</param-name>  
+    <param-value>  
+        /WEB-INF/login-servlet.xml,  
+        /WEB-INF/login-security.xml,  
+        /WEB-INF/login-service.xml  
+      </param-value>  
+    </context-param>     
+	<filter-mapping>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<filter>  
+	  <filter-name>springSecurityFilterChain</filter-name>  
+	  <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>  
+	</filter>
 	<!-- Change to "Production" when you are ready to deploy -->
 	<context-param>
 		<param-name>javax.faces.DEFAULT_SUFFIX</param-name>
@@ -23,7 +48,7 @@
 
 	<!-- Welcome page -->
 	<welcome-file-list>
-		<welcome-file>index.xhtml</welcome-file>
+		<welcome-file>login.xhtml</welcome-file>
 	</welcome-file-list>
 
 	<!-- JSF mapping -->
@@ -33,11 +58,6 @@
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 
-	<!-- Map these files with JSF -->
-<!-- 	<servlet-mapping> -->
-<!-- 		<servlet-name>Faces Servlet</servlet-name> -->
-<!-- 		<url-pattern>/pages/*</url-pattern> -->
-<!-- 	</servlet-mapping> -->
 	<servlet-mapping>
 		<servlet-name>Faces Servlet</servlet-name>
 		<url-pattern>*.jsf</url-pattern>
